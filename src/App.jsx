@@ -117,54 +117,28 @@ function App() {
   };
 
   return (
-    <AppContext.Provider
-      value={{
-        items,
-        cartItems,
-        favorites,
-        isItemAdded,
-        onAddToFavorite,
-        onAddToCart,
-        setCartOpened,
-        setCartItems
-      }}
-    >
-       
-
-        <Header onClickCart={() => setCartOpened(true)} />
-
+        // <Header onClickCart={() => setCartOpened(true)} />
         <BrowserRouter>
-
+        <Routes>
         <Route path='/' element={
-        <AppContext.Provider
-        value={{
-          items,
-          cartItems,
-          favorites,
-          isItemAdded,
-          onAddToFavorite,
-          onAddToCart,
-          setCartOpened,
-          setCartItems
-        }}
-      >        
-        <Home 
-        items={items}
-        cartItems={cartItems}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        onChangeSearchInput={onChangeSearchInput}
-        onAddToFavorite={onAddToFavorite}
-        onAddToCart={onAddToCart}
-        isLoading={isLoading}
-      />
-      </AppContext.Provider>} />
+          <AppContext.Provider value={{items,cartItems,favorites, isItemAdded, onAddToFavorite, onAddToCart,setCartOpened, setCartItems}} >        
+           <Home 
+            items={items}
+            cartItems={cartItems}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            onChangeSearchInput={onChangeSearchInput}
+            onAddToFavorite={onAddToFavorite}
+            onAddToCart={onAddToCart}
+           isLoading={isLoading}
+         />
+          </AppContext.Provider> 
+    } />
 
       <Route path='favorites' element={<Favorites/>} />
-
       <Route path='orders' element={<Orders />} />
+      </Routes>
       </BrowserRouter>
-    
   );
 }
 
